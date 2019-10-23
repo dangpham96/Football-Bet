@@ -1,0 +1,14 @@
+<%= form_for [:admin, @category] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group col-sm-6">
+    <%= f.text_field :name, autofocus: true, class: "form-control form-control-user",
+      placeholder: t("category_name") %>
+  </div>
+
+  <div class="form-group col-sm-6">
+    <%= f.select :status, options_for_select(Category.statuses.map { |key, value| [key.humanize, key] }), {include_blank: t("status")}, {class: "form-control"} %>
+  </div>
+
+  <%= button_tag t("submit"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("reset"), type: "reset", class: "btn btn-default" %>
+<% end %>

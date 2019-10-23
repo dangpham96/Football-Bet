@@ -1,0 +1,17 @@
+<div class="hero-area view_list_fixture">
+  <div class="container">
+    <div class="row">
+      <div id="select-box-league" class="col-12 col-lg-2">
+        <%= select_tag "league", options_from_collection_for_select(@leagues, "id", "name"),{include_blank: t("choose_league"), id: "select_league", class:"pixtures"} %>
+      </div>
+      <div id="select-box-season" class="col-12 col-lg-3">
+        <%= select_tag "season", "",{include_blank: t("choose_season"), id: "select_season", class:"pixtures"} %>
+      </div>
+      <div id="select-box-round" class="col-12 col-lg-2">
+        <%= select_tag "round", "",{include_blank: t("choose_round"), id: "select_season", class:"pixtures"} %>
+      </div>
+    </div>
+    <div id="match-list">
+    </div>
+  </div>
+</div>

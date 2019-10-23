@@ -1,0 +1,16 @@
+omniauth:
+  facebook: "facebook"
+  google_oauth: "google_oauth2"
+start_stt: 1
+end_stt: 10
+paging_table: 10
+paging_table_new: 5
+paging_table_new: 5
+start_char: 0
+end_char: 150
+show_newspaper_home: 4
+space: "-"
+paging_table_comment: 5
+defaut_number_gold: 0
+limit_news_category_home: 4
+paging_table_bet: 5

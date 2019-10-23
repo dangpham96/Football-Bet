@@ -1,0 +1,14 @@
+<tr>
+  <td><span><%= get_index_page category_counter %></span></td>
+  <td><%= category.name %></td>
+  <td><%= l category.created_at, format: :date_month_year_concise %></td>
+  <td><%= l category.updated_at, format: :date_month_year_concise %></td>
+  <td class="text-center">
+    <%= link_to edit_admin_category_path(category) do %>
+    <i class="fa fa-pencil fa-fw fa-update"></i>
+    <% end %>   
+    <%= link_to [:admin, category], method: :delete, data:{ confirm: t("you_sure")} do %>
+    <i class="fa fa-trash-o fa-fw fa-delete"></i>
+    <% end %>    
+  </td>
+</tr>

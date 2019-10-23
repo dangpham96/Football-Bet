@@ -1,0 +1,35 @@
+<div class="blog-area section-padding-0-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="blog-posts-area">
+        <% if @newspapers.size.zero? %>
+          <div class="single-blog-post featured-post mb-30">
+            <p> <%= t "category_has_not_news" %> </p>
+          </div>
+        <% else %>
+          <% @newspapers.each do |newspaper| %>
+            <div class="single-blog-post featured-post mb-30">
+              <div class="post-thumb">
+                <%= link_to newspaper_path(newspaper) do %>
+                  <%= image_tag "#{newspaper.image}" , alt: "avatar" %>
+                <% end %>
+              </div>
+              <div class="post-data">
+                <%= link_to "#" do %>
+                  <h6><%= newspaper.title %></h6>
+                <% end %>
+                <div class="post-meta">
+                  <p class="post-author"><%= t("news_by") %> <%= link_to t("admin"), "#" %></p>
+                  <p class="post-excerp"> <%= raw newspaper.description  %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <%= paginate @newspapers, theme: t("theme_paging") %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="card-body">
+  <div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr class="text-center">
+          <th><%= t "time_title" %></th>
+          <th colspan="3"><%= t "match" %></th>
+          <th><%= t "stadium" %></th>
+          <th><%= t "details" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @matches.each do |match| %>
+        <tr>
+          <th><%= match.start_time.strftime(t("format_time_hours")) %> </th>
+          <th class="text-center">
+            <%= match.home_team.name %>
+            <%= image_tag "#{match.home_team.logo}" , class: "mw", alt: "avatar" %>
+          </th>
+          <% if match.unfought? %>
+          <th class="text-center"> <%= match.goals_home_team %> -  <%= match.goals_guest_team %> </th>
+          <% elsif match.fighting? %>
+          <th class="text-center green"> <%= match.goals_home_team %> -  <%= match.goals_guest_team %> </th>
+          <% else %>
+          <th class="text-center red"> <%= match.goals_home_team %> -  <%= match.goals_guest_team %> </th>
+          <% end %>
+          <th class="text-center">
+            <%= image_tag "#{match.home_team.logo}" , class: "mw", alt: "avatar" %>
+            <%= match.guest_team.name %>
+          </th>
+          <th><%= match.home_team.stadium %> </th>
+          <th>
+            <%= link_to  match do  %>
+            <i class="fa fa-forward"></i>
+            <% end %>
+          </th>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

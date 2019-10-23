@@ -1,0 +1,34 @@
+<%= form_for [:admin, @newspaper] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <div class="form-group col-sm-6">
+    <%= f.text_field :title, autofocus: true, class: "form-control form-control-user",
+      placeholder: t("tilte_new") %>
+  </div>
+  
+  <div class="form-group col-sm-6">
+    <%= f.select :category_id, get_category, {include_blank: t("category_new")}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group col-sm-6">
+    <%= f.select :status, options_for_select(Newspaper.statuses.map { |key, value| [key.humanize, key] }), {include_blank: t("news_styles")}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, accept: "image/png,image/gif,image/jpeg" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: "ckeditor" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.text_area :content, class: "ckeditor" %>
+  </div>
+
+  <%= button_tag t("submit"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("reset"), type: "reset", class: "btn btn-default" %>
+<% end %>

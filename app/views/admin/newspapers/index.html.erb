@@ -1,0 +1,28 @@
+<%= provide :title, t("list_news") %>
+<%= link_to t("create_new"), new_admin_newspaper_path, class: "btn btn-primary" %>
+<hr class="invisible">
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary"><%= t "list_news" %></h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr class="text-center">
+            <th><%= t ".stt" %></th>
+            <th><%= t ".title" %></th>
+            <th><%= t ".image" %></th>
+            <th><%= t ".created_time" %></th>
+            <th><%= t ".update_time" %></th>
+            <th><%= t ".action" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "newspaper", collection: @newspapers %>	
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%= paginate @newspapers, theme: t("theme_paging") %>

@@ -1,0 +1,15 @@
+<tr>
+  <td><span><%= get_index_page league_counter %></span></td>
+  <td><%= league.name %></td>
+  <td><%= league.country %></td> 
+  <td><%= l league.created_at, format: :date_month_year_concise %></td>
+  <td><%= l league.updated_at, format: :date_month_year_concise %></td>
+  <td class="text-center">
+    <%= link_to edit_admin_league_path(league) do %>
+      <i class="fa fa-pencil fa-fw fa-update"></i>
+    <% end %>    
+    <%= link_to [:admin, league], method: :delete, data:{ confirm: t("you_sure")} do %>
+      <i class="fa fa-trash-o fa-fw fa-delete"></i>
+    <% end %>   
+  </td>
+</tr>

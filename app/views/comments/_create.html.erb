@@ -1,0 +1,14 @@
+<div class="cm_nspp">
+  <%= image_tag "#{@comment.user.avatar}" , class: "mw", alt: "avatar", title: "#{@comment.user.name}" %> 
+  <div class="content_cm">
+    <p><%= comment.created_at.strftime(t("format_time"))%></p>
+    <p><%= comment.content %></p>
+  </div>
+  <% if user_signed_in? && comment.user_id == current_user.id %>
+    <div class="action_cm">
+      <%= link_to comment, title: t("delete"), method: :delete, data: {confirm: t("you_sure")}, remote: true, class:"comment_delete" do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>

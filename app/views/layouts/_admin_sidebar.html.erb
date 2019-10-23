@@ -1,0 +1,74 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-text mx-3"><%= t "admin_panel" %></div>
+  </a>
+
+  <hr class="sidebar-divider my-0">
+
+  <li class="nav-item active">
+    <a class="nav-link" href="index.html">
+      <i class="fa fa-fw fa-tachometer-alt"></i>
+      <label><%= t "dashboard" %></label></a>
+  </li>
+
+  <hr class="sidebar-divider">
+
+  <div class="sidebar-heading">
+  </div>
+
+  <li class="nav-item">
+    <%= link_to admin_users_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-fw fa-user"></i>
+      <label><%= t "users" %></label>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to admin_categories_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-css3"></i>
+      <label><%= t "categories" %></label>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to admin_newspapers_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-sticky-note"></i>
+      <label><%= t "news" %></label>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to admin_leagues_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-globe"></i>
+      <label><%= t "leagues" %></label>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to admin_seasons_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-hourglass-half"></i>
+      <label><%= t "seasons" %></label>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to admin_rounds_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-circle"></i>
+      <label><%= t "rounds" %></label>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to admin_football_clubs_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-slack"></i>
+      <label><%= t "footBall_clubs" %></label>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to admin_players_path, class: "nav-link collapsed" do %>
+      <i class="fa fa-location-arrow"></i>
+      <label><%= t "player" %></label>
+    <% end %>
+  </li>
+</ul>

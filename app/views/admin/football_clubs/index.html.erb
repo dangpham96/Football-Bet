@@ -1,0 +1,31 @@
+<%= provide :title, t("list_football_club") %>
+<%= link_to t("create_football_club"), new_admin_football_club_url, class: "btn btn-primary" %>
+<hr class="invisible">
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary"><%= t "list_football_club" %></h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr class="text-center">
+            <th><%= t "stt" %></th>
+            <th><%= t "name" %></th>
+            <th><%= t "description" %></th>
+            <th><%= t "member" %></th>
+            <th><%= t "stadium" %></th>
+            <th><%= t "logo" %></th>
+            <th><%= t "created_time" %></th>
+            <th><%= t "update_time" %></th>
+            <th><%= t "action" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "football_club", collection: @football_clubs %>	
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%= paginate @football_clubs, theme: t("theme_paging") %>

@@ -1,0 +1,20 @@
+<tr>
+  <td><span><%= get_index_page football_club_counter %></span></td>
+  <td><span><%= football_club.name %></span></td>
+  <td><span><%= raw football_club.description %></span></td>
+  <td><span><%= football_club.member %></span></td>
+  <td><span><%= football_club.stadium %></span></td>
+  <td>
+    <%= image_tag "#{football_club.logo}" , class: "mx-auto img-fluid img-circle d-block mw", alt: "avatar" %>
+  </td>
+  <td><%= football_club.created_at.strftime(t("format_time")) %></td>
+  <td><%= football_club.updated_at.strftime(t("format_time")) %></td>
+  <td class="text-center">
+    <%= link_to edit_admin_football_club_path(football_club) do %>
+    <i class="fa fa-pencil fa-fw fa-update"></i>
+    <% end %>   
+    <%= link_to [:admin, football_club], method: :delete, data:{ confirm: t("you_sure")} do %>
+    <i class="fa fa-trash-o fa-fw fa-delete"></i>
+    <% end %>    
+  </td>
+</tr>

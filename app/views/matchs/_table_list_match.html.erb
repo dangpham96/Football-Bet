@@ -1,0 +1,19 @@
+<tr>
+  <td><%= l match.start_time, format: :format_time_hours %></td>
+  <th class="text-center">
+    <%= match.home_team.name %>
+    <%= image_tag "#{match.home_team.logo}" , class: "mw", alt: "avatar" %>
+  </th>
+  <% if match.unfought? %>
+    <th class="text-center"> <%= match.goals_home_team %> -  <%= match.goals_guest_team %> </th>
+  <% elsif match.fighting? %>
+    <th class="text-center green"> <%= match.goals_home_team %> -  <%= match.goals_guest_team %> </th>
+  <% else %>
+    <th class="text-center red"> <%= match.goals_home_team %> -  <%= match.goals_guest_team %> </th>
+  <% end %>
+  <th class="text-center">
+    <%= image_tag "#{match.home_team.logo}" , class: "mw", alt: "avatar" %>
+    <%= match.guest_team.name %>
+  </th>
+  <th><%= match.home_team.stadium %> </th>
+</tr>

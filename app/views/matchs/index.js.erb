@@ -1,0 +1,7 @@
+$("#select-box-season").html("<%= j render 'select_seasons' %> ")
+<% if @season %>
+  $("#select-box-round").html("<%= j render 'select_round' %>")
+  <% if @round %>
+    $("#match-list").html("<%= j render 'list_matches' %>")
+  <% end %>
+<% end %>

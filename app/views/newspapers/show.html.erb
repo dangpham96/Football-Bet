@@ -1,0 +1,57 @@
+<div class="featured-post-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-8">
+        <div class="row">
+          <h2 class="title_newspaper"><%= @newspaper.title%></h2>
+          <p> <%= raw @newspaper.content%> </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <% @newspaper_new.each do |newspaper| %>
+        <div class="single-blog-post small-featured-post d-flex">
+          <div class="post-thumb newlq">
+            <%= link_to newspaper_path(newspaper) do %>
+            <%= image_tag "#{newspaper.image}" , alt: "avatar" %>
+            <% end %>
+          </div>
+          <div class="post-data">
+            <div class="post-meta">
+              <a href="#" class="post-title newlq">
+                <h6><%= @newspaper.title%></h6>
+              </a>
+              <p class="post-date"><span><%= @newspaper.created_at.strftime(t("format_time")) %></span></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <h4><%= t "comment" %></h4>
+    <div class="col-12 col-md-6 col-lg-8 comment-newspaper" id="add_comment">
+      <% @comments.each do |comment| %>
+        <div class="cm_nspp">
+          <%= image_tag "#{comment.user.avatar}" , class: "mw", alt: "avatar", title: "#{comment.user.name}" %>         
+            <div class="content_cm">
+              <p><%= comment.created_at.strftime(t("format_time"))%></p>
+              <p><%= comment.content %></p>
+            </div>
+            <% if user_signed_in? && comment.user_id == current_user.id %>
+              <div class="action_cm">
+                <%= link_to comment, title: t("delete"), method: :delete, data: {confirm: t("you_sure")}, remote: true, class:"comment_delete" do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              </div>
+            <% end %>
+        </div>
+      <% end %>      
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <% if user_signed_in? %>
+        <%= render "comments/form" %>
+      <% else %>
+        <h3><%= link_to t("sign_in_to_comment"), new_user_session_path %></h3>
+      <% end %>     
+    </div>    
+  </div>  
+</div>

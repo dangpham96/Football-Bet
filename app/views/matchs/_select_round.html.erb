@@ -1,0 +1,3 @@
+<%= select_tag "round", options_from_collection_for_select(@season.rounds, "id", "round_number"),
+  {include_blank: t("choose_round"),
+  id: "select_round", class:"pixtures"} %>

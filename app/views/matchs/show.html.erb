@@ -1,0 +1,54 @@
+<div class="hero-area match-bet">
+  <div class="container">
+    <div class="row">
+    <div class="text-center tittle_bet">
+      <h4 ><%= t "details_match"%></h4>
+    </div>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <tbody>      
+        <tr>
+          <th><%= @match.start_time.strftime(t("format_time_hours")) %> </th>
+          <th class="text-center">
+            <%= image_tag "#{@match.home_team.logo}" , class: "mw", alt: "avatar" %>
+            <p><%= @match.home_team.name %><br>(<%= t "home_team" %>)</p>            
+          </th>
+          <% if @match.unfought? %>
+            <th class="text-center"> <%= @match.goals_home_team %> -  <%= @match.goals_guest_team %> </th>
+          <% elsif @match.fighting? %>
+            <th class="text-center green"> <%= @match.goals_home_team %> -  <%= @match.goals_guest_team %> </th>
+          <% else %>
+            <th class="text-center red"> 
+              <%= @match.goals_home_team %> -  <%= @match.goals_guest_team %><br>
+              <p><%= t "finish" %></p> 
+            </th>
+                 
+          <% end %>
+          <th class="text-center">
+            <%= image_tag "#{@match.home_team.logo}", class: "mw", alt: "avatar" %>
+            <p><%= @match.guest_team.name %></p>     
+          </th>
+          <th><%= @match.home_team.stadium %> </th>
+        </tr>     
+      </tbody>
+    </table>
+    <% if user_signed_in? %>
+      <% if @match.fighting? || @match.fought? %>
+        <h6><%= t "bet_timeout" %></h6>
+       <% else %>
+          <% if count_user_id_math_id(@match.id) == 0 %>
+            <div class="card-body">
+              <div class="form_bet">
+                <h5 class="title-bet-home-team"><%= t"bet_on_the_home_team" %></h5>
+                <%= render "bets/form" %>
+              </div>
+            </div>
+          <% else %>
+            <h6><%= t "beted_match" %></h6>
+          <% end %>
+       <% end %>
+    <% else %>
+      <h3><%= link_to t("sign_in_to_place_a_bet"), new_user_session_path %></h3>
+    <% end %>   
+    </div>
+  </div>
+</div>

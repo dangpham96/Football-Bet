@@ -1,0 +1,11 @@
+<%= form_for @bet do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group col-sm-2">
+    <%= f.select :result, options_for_select(Bet.results.map { |key, value| [key.humanize, key] }), {include_blank: t("result_title")}, {class: "form-control"} %>
+  </div>
+  <%= f.hidden_field :match_id, value: params[:id] %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="btn-submit">
+    <%= button_tag t("submit"), type: "submit", class: "btn btn-primary", id: "content_submit" %>
+  </div>
+<% end %>

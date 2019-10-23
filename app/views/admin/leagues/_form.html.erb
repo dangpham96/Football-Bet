@@ -1,0 +1,14 @@
+<%= form_for [:admin, @league] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group form-group col-sm-6 ">
+    <%= f.text_field :name, autofocus: true, class: "form-control form-control-user",
+      placeholder: t("league") %>
+  </div>
+  
+  <div class="form-group form-group col-sm-6 ">
+    <%= f.text_field :country, autofocus: true, class: "form-control form-control-user",
+      placeholder: t("country") %>
+  </div>
+  <%= button_tag t("submit"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("reset"), type: "reset", class: "btn btn-default" %>
+<% end %>

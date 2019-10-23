@@ -1,0 +1,29 @@
+<%= provide :title, t("list_player") %>
+<%= link_to t("create_player"), new_admin_player_url, class: "btn btn-primary" %>
+<hr class="invisible">
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary"><%= t "list_player" %></h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr class="text-center">
+            <th><%= t "stt" %></th>
+            <th><%= t "name" %></th>
+            <th><%= t "number" %></th>
+            <th><%= t "country" %></th>
+            <th><%= t "birthday" %></th>
+            <th><%= t "football_club" %></th>
+            <th><%= t "action" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "player", collection: @players %>	    
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%= paginate @players, theme: t("theme_paging") %>

@@ -1,0 +1,13 @@
+//= require jquery
+//= require turbolinks
+//= require popper
+//= require bootstrap
+//= require jquery_ujs
+//= require ckeditor/init
+//= require bootstrap-sprockets
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
+//= require custom
+//= require select2
+//= require_tree .

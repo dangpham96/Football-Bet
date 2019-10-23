@@ -1,0 +1,19 @@
+<tr>
+  <td><span><%= get_index_page round_counter %></span></td>
+  <td><%= round.season.league_name %></td>
+  <td><%= round.season_start_time.strftime(t("format_time_season")) + " - " + round.season_finish_time.strftime(t("format_time_season"))  %></td>
+  <td><%= round.round_number %></td>
+  <td><%= round.created_at.strftime(t("format_time")) %></td>
+  <td><%= round.updated_at.strftime(t("format_time")) %></td>
+  <td class="text-center">
+    <%= link_to admin_round_matches_path(round), title: t("show") do %>
+      <i class="fa fa-trash-o fa-fw fa fa-eye"></i>
+    <% end %>
+    <%= link_to edit_admin_round_path(round) do %>
+    <i class="fa fa-pencil fa-fw fa-update"></i>
+    <% end %>   
+    <%= link_to [:admin, round], method: :delete, data:{ confirm: t("you_sure")} do %>
+    <i class="fa fa-trash-o fa-fw fa-delete"></i>
+    <% end %>    
+  </td>
+<tr>

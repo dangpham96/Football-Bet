@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row my-2">
+    <div class="col-lg-4 order-lg-1 text-center">
+      <div class="target">
+        <%= image_tag "#{@user.avatar}" , class: "mx-auto img-fluid img-circle d-block", alt: "avatar" %>
+        <br><label><h4><b><%= @user.name %></b></h4></label>
+      </div>
+    </div>
+    <div class="col-lg-8 order-lg-2">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a href="" data-target="#profile" data-toggle="tab" class="nav-link active"><%= t "user.profile" %></a>
+        </li>
+      </ul>
+      <div class="tab-content py-4">
+        <div class="tab-pane active" id="profile">
+          <h5 class="mb-3 font-weight-bold"><%= t "user.user_profile" %></h5>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="user-name d-flex">
+                <label><%= t "user.name" %>:&nbsp;</label>
+                <label>
+                  <%= @user.name %>
+                </label>
+              </div>
+              <div class="user-email d-flex">
+                <label><%= t "user.email" %>:&nbsp;</label>
+                <label>
+                <%= @user.email %>
+              </label>
+              </div>
+            </div>
+            <div class="col-md-12">
+            <h5 class="mt-2 font-weight-bold">
+              <span class="fa fa-clock-o ion-clock float-right">
+              </span><%= t "history_bet" %>
+            </h5>
+            <table class="table table-sm table-hover table-striped">
+              <thead>
+                <th><%= t "match_id" %></th>
+                <th><%= t "result_bet" %></th>
+                <th><%= t "result" %></th>
+              </thead>
+              <tbody>
+                <% @show_bet.each do |b| %>
+                  <tr>
+                    <th>
+                      <%= link_to match_path(b.match_id) do %>
+                        <%= b.match_id %></th>
+                      <% end %>
+                    <th><%= t "home_team" %> (<%= b.result %>)</th>
+                    <th><%= b.status.capitalize %></th>
+                  </tr>
+                <% end %>         
+              </tbody>
+            </table>
+            <%= paginate @show_bet, theme: t("theme_paging") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

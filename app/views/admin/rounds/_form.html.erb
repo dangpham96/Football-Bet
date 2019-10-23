@@ -1,0 +1,15 @@
+<%= form_for [:admin, @round], class: "user" do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <div class="form-group col-sm-6">
+    <%= f.text_field :round_number, autofocus: true, class: "form-control form-control-user",
+      placeholder: t("round_number") %>
+  </div>
+
+  <div class="form-group col-sm-6">
+  <%= f.select :season_id, get_season, {include_blank: t("season")}, {class: "form-control"} %>
+  </div>
+
+  <%= button_tag t("submit"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("reset"), type: "reset", class: "btn btn-default" %>
+<% end %>

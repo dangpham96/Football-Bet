@@ -1,0 +1,86 @@
+<header class="header-area">
+  <div class="top-header-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="top-header-content d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <h1 class="title-logo">
+                <%= link_to t("title_website"), root_path %>
+              </h1>
+            </div>
+            <div class="login-search-area d-flex align-items-center">
+              <div class="login d-flex">
+              <% if user_signed_in? %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= current_user.name %> <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <% if current_user.is_admin? %>
+                      <li>
+                      <%= link_to t("admin_manage") ,admin_index_path, class:"back-text" %>
+                    </li>
+                    <% end %>
+                    <li>
+                    <%= link_to t("profile") , user_path(current_user), class:"back-text" %>
+                    </li>
+                    <li>
+                      <%= link_to t("edit_profile") ,edit_user_registration_path, class:"back-text" %>
+                    </li>
+                  </ul>
+                </li>
+                <%= link_to t("signout"), destroy_user_session_path, method: :delete %>
+              <% else %>
+                <%= link_to t("signin"), new_user_session_path %>
+                <%= link_to t("signup"), new_user_registration_path %>
+              <% end %>
+              </div>
+              <div class="search-form">            
+                <%= form_for :q, url: search_path, method: :get, html: {class: "form-inline my-2 my-lg-0"} do |f| %>
+                  <%= f.search_field :title_or_description_cont, class: "form-control mr-sm-2", placeholder: " #{t "search_news"}" %>
+                  <button class="fa fa-search" type="submit"></button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="newspaper-main-menu" id="stickyMenu">
+    <div class="classy-nav-container breakpoint-off">
+      <div class="container">
+        <nav class="classy-navbar justify-content-between" id="newspaperNav">
+          <div class="logo">
+            <a href="#"></a>
+          </div>
+          <div class="classy-menu">
+            <div class="classycloseIcon">
+              <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+            </div>
+            <div class="classynav">
+              <ul>
+                <li class="active">
+                  <%= link_to t("home"), root_path %> 
+                </li>
+                <li class="cn-dropdown-item has-down"><a href="#"><%= t "category_newspaper" %></a>
+                    <ul class="dropdown">
+                      <% @categories.each do |category| %>
+                        <li>
+                          <%= link_to category.name, category_path(id: category.id) %>
+                        </li>
+                      <% end %>                        
+                    </ul>
+                </li>
+                <li>
+                  <%= link_to t("fixtures"), matchs_path %> 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

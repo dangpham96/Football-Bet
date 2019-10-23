@@ -1,0 +1,33 @@
+<%= form_for [:admin, @player] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group col-sm-6">
+    <%= f.text_field :name, autofocus: true, class: "form-control form-control-user",
+      placeholder: t("name") %>
+  </div>
+
+   <div class="form-group col-sm-6">
+    <%= f.select :position, options_for_select(Player.positions.map { |key, value| [key.upcase, key] }), {include_blank: t("position")}, {class: "form-control"} %>
+  </div>
+
+   <div class="form-group col-sm-6">
+    <%= f.text_field :number, class: "form-control form-control-user",
+      placeholder: t("number") %>
+  </div>
+
+   <div class="form-group col-sm-6">
+    <%= f.text_field :country, class: "form-control form-control-user",
+      placeholder: t("country") %>
+  </div>
+
+   <div class="form-group col-sm-6">
+    <%= f.select :football_club_id, get_football_club, {include_blank: t("football_club")}, {class: "form-control"} %>
+  </div>
+
+   <div class="form-group col-sm-6 select-time">
+    <%= f.label :birthday %><br>
+    <%= f.date_select :birthday, class: "datepicker"  %>
+  </div>
+
+   <%= button_tag t("submit"), type: "submit", class: "btn btn-primary" %>
+  <%= button_tag t("reset"), type: "reset", class: "btn btn-default" %>
+<% end %> 

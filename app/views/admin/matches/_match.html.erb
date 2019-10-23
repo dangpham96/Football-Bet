@@ -1,0 +1,18 @@
+<tr>
+  <td><span><%= get_index_page match_counter %></span></td>
+  <td><%= match.home_team.name %></td>
+  <td><%= match.guest_team.name %></td>
+  <td><%= match.start_time.strftime(t("format_time_match")) %></td>
+  <td><%= match.goals_home_team %></td>
+  <td><%= match.goals_guest_team %></td>
+  <td><%= match.round_round_number %></td>
+  <td><%= match.status %></td>  
+  <td class="text-center">
+    <%= link_to edit_admin_round_match_path(id: match.id) do %>
+    <i class="fa fa-pencil fa-fw fa-update"></i>
+    <% end %>   
+    <%= link_to [:admin,@round,@match], method: :delete, data:{ confirm: t("you_sure")} do %>
+    <i class="fa fa-trash-o fa-fw fa-delete"></i>
+    <% end %>    
+  </td>
+</tr>

@@ -1,0 +1,29 @@
+<div class="popular-news-area section-padding-80-50">
+  <div class="container">
+    <div class="row">
+			<h4><b><%= t "result_for" %> <%= params[:q][:title_or_description_cont] %></b></h4>
+      <div class="col-12 col-lg-12">
+        <div class="row">
+          <% @newspapers.each do |newspaper| %>
+            <div class="col-12 col-md-4">
+              <div class="single-blog-post style-3">
+                <div class="post-thumb">
+                  <%= link_to newspaper_path(newspaper) do %>
+                     <%= image_tag "#{newspaper.image}" , alt: "avatar" %>
+                  <% end %>  
+                  </a>
+                </div>
+                <div class="post-data">
+                  <%= link_to newspaper_path(newspaper) do %>
+                     <h6><%= newspaper.title %></h6>
+                  <% end %>
+                  <p><%= raw( newspaper.description.slice(Settings.start_char..Settings.end_char)) %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>    
+    </div>
+  </div>
+</div>

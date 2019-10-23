@@ -1,0 +1,12 @@
+<%= form_for @comment, remote: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="text_aria_comment">
+    <%= f.text_area :content, class: "form-control form-control-user",
+      placeholder: t("comment_newspapers"), id: "comment_content" %><br>
+  </div>
+  <%= f.hidden_field :newspaper_id, value: params[:id] %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="btn-submit-comment">
+    <%= button_tag t("submit"), type: "submit", class: "btn btn-primary", id: "content_submit" %>
+  </div>
+<% end %>
